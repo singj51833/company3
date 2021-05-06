@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="Model.porderMapper">
+ 
+  <insert id="add" parameterType="Model.porder">
+  	insert into porder(name,product1,product2,product3,sum,discountprice,date) 
+  	values(#{name},#{product1},#{product2},#{product3},#{sum},#{discountprice},
+  	#{date})
+  </insert>
+  
+  <select id="select" resultType="Model.porder">
+    select * from porder
+  </select>
+  <select id="select2" resultType="Model.porder">
+    select * from porder where id>=10;
+  </select>
+  
+  <select id="selectId" resultType="Model.porder">  
+  select * from porder where id=#{id}  
+  </select>
+  
+  <update id="update" parameterType="Model.porder">
+  	update porder set name=#{name}, product1=#{product1},
+  	product2=#{product2},product3=#{product3},sum=#{sum},discountprice=#{discountprice},
+  	date=#{date}
+  	where id=#{id}
+  
+  </update>
+  
+  <delete id="delete" parameterType="Model.porder">
+  delete from porder where id=#{id}
+  
+  </delete>
+  
+</mapper>

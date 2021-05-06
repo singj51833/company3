@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace 代表 xml打包起來的路徑 把它當成一個class -->
+<mapper namespace="Model.memberMapper">
+ 	<!-- 
+	id代表 取名稱  select select = new select()的意思
+	resultType指要找哪一張表 需要完整路徑
+	-->
+  <insert id="add" parameterType="Model.member">
+  	<!-- #{} 等於 getparameter的 ?-->
+  	insert into member(name,username,password,phone,address,admin) 
+  	values(#{name},#{username},#{password},#{phone},#{address},#{admin})
+  </insert>
+  
+  <select id="select" resultType="Model.member">
+    select * from member
+  </select>
+  <select id="select2" resultType="Model.member">
+    select * from member where id>=10;
+  </select>
+  
+  <select id="selectId" resultType="Model.member">  
+  select * from member where id=#{id}  
+  </select>
+  
+  <select id="login" resultType="Model.member">
+  select * from member where username=#{username} and password=#{password}
+  
+  </select>
+  
+  
+  <update id="update" parameterType="Model.member">
+  	update member set name=#{name}, username=#{username},
+  	password=#{password},phone=#{phone},address=#{address},admin=#{admin}
+  	where id=#{id}
+  
+  </update>
+  
+  <delete id="delete" parameterType="Model.member">
+  delete from member where id=#{id}
+  
+  </delete>
+  
+</mapper>
